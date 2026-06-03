@@ -1,0 +1,15 @@
+def ext_gcd(a, b):
+    if b == 0:
+        return (a, 1, 0)
+    g, x1, y1 = ext_gcd(b, a % b)
+    x = y1
+    y = x1 - (a // b) * y1
+    return (g, x, y)
+g,lam,mu = ext_gcd(25,16)
+print(g, lam, mu)
+def mod_inv(a, m):
+    g, x, _ = ext_gcd(a, m)
+    if g != 1:
+        raise Exception("no mod inverse")
+    return x % m
+print(mod_inv(25,16))
