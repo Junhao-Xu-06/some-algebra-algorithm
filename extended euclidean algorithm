@@ -1,0 +1,9 @@
+def ext_gcds(a, b):
+    if b == 0:
+        return (a,1,0)
+    g,x1,y1 = ext_gcds(b, a % b)
+    x = y1
+    y = x1 - (a//b)*y1
+    return g, x, y
+g, x, y = ext_gcds（25,16)
+print(g, x, y)
