@@ -1,0 +1,15 @@
+def is_homomorphism(G_op, H_op, f, G_list, H_list):
+    for g1 in G_list:
+        for g2 in G_list:
+            lhs = f(G_op(g1,g2))
+            rhs = H_op(f(g1), f(g2))
+            if lhs != rhs:
+                return False
+    return True
+def G_add(a,b): return a+b
+def H_mod3_add(a,b): return (a+b)%3
+def f(x): return x%3
+
+G = [0,1,2,3,4,5]
+H = [0,1,2]
+print(is_homomorphism(G_add,H_mod3_add,f,G,H))
